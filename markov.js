@@ -28,14 +28,14 @@ class MarkovMachine {
     const chains = this.makeChains();
     const wrds = Object.keys(chains);
 
-    let wrd = words[Math.floor(Math.random() * wrds.length)];
+    let wrd = wrds[Math.floor(Math.random() * wrds.length)];
     
     for (let i = 0; i < numWords - 1; i++ ) {
       p += wrd + ' ';
-      let newWrd = chains[word][Math.floor(Math.random() * chains[wrd].length)];
+      let newWrd = chains[wrd][Math.floor(Math.random() * chains[wrd].length)];
       wrd = newWrd;
       if (!wrd || wrd === null) {
-        word = words[Math.floor(Math.random() * wrds.length)];
+        wrd = wrds[Math.floor(Math.random() * wrds.length)];
       }
     }
     return p;
